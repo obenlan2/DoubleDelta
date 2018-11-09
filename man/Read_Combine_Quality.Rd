@@ -2,7 +2,7 @@
 \alias{Read_Combine_Quality}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+Combine qRT-PCR Data in CSV files.
 }
 \description{
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
@@ -13,16 +13,16 @@ Read_Combine_Quality(File1, File2 = FALSE, File3 = FALSE, New_name.csv)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{File1}{
-%%     ~~Describe \code{File1} here~~
+A CSV file containing qRT-PCR results generated from SDS 2.3 software. 
 }
   \item{File2}{
-%%     ~~Describe \code{File2} here~~
+An additional CSV file containing qRT-PCR results generated from SDS 2.3 software that the user would like to combine with File1. Default value is FALSE.
 }
   \item{File3}{
-%%     ~~Describe \code{File3} here~~
+An additional CSV file containing qRT-PCR results generated from SDS 2.3 software that the user would like to combine with File1 and File2. Default value is FALSE. 
 }
   \item{New_name.csv}{
-%%     ~~Describe \code{New_name.csv} here~~
+The name the user would like the new file to be called. This should be in quoutes and have the .csv file extension.
 }
 }
 \details{
