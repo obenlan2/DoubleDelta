@@ -35,113 +35,112 @@ Read_Combine_Quality <- function(File1, File2 = FALSE, File3 = FALSE, New_name.c
 }
 
 deltas <- function(data, gene_name, time_point, treatment1, treatment2, control_gene, control_gene2 = FALSE, control_gene3 = FALSE){
-  #outcon argument prob go here outcon <- file(NAME_of_File_argument, open = "w") -default vaulue should be false for arugment
-  Find_All_Gene_Samples <- grep(gene_name, data$Sample.Name)
-  All_Gene_Samples <- data[Find_All_Gene_Samples,]
-  Find_Specific_Time <- grep(time_point, All_Gene_Samples$Sample.Name)
-  All_Gene_Samples_At_Specific_Time <- All_Gene_Samples[Find_Specific_Time,]
-  Find_All_treatment1 <- grep(treatment1, All_Gene_Samples_At_Specific_Time$Sample.Name)
-  All_treatment1_Samples <- All_Gene_Samples_At_Specific_Time[Find_All_treatment1,]
-  Find_All_treatment2 <-grep(treatment2, All_Gene_Samples_At_Specific_Time$Sample.Name)
-  All_treatment2_Samples <- All_Gene_Samples_At_Specific_Time[Find_All_treatment2,]
+  Find_All_Gene_Samples <- grep(gene_name, data$Sample.Name) #finds all samples matching gene_name
+  All_Gene_Samples <- data[Find_All_Gene_Samples,] #indexes by samples matching gene_name
+  Find_Specific_Time <- grep(time_point, All_Gene_Samples$Sample.Name) #finds data for a specified time point in All_Gene_Samples
+  All_Gene_Samples_At_Specific_Time <- All_Gene_Samples[Find_Specific_Time,] #indexes by time in All_Gene_Samples
+  Find_All_treatment1 <- grep(treatment1, All_Gene_Samples_At_Specific_Time$Sample.Name)#finds samples that match treatment1 
+  All_treatment1_Samples <- All_Gene_Samples_At_Specific_Time[Find_All_treatment1,]#indexes by samples that match treatment1
+  Find_All_treatment2 <-grep(treatment2, All_Gene_Samples_At_Specific_Time$Sample.Name)#finds samples that match treatment2 
+  All_treatment2_Samples <- All_Gene_Samples_At_Specific_Time[Find_All_treatment2,]#indexes by samples that match treatment2
   Mean_CT_for_treatment1 <- mean(as.numeric(as.character(All_treatment1_Samples$Ct), NA == "Undetermined"),
-                                 na.rm = TRUE)
+                                 na.rm = TRUE)#finds the mean Ct for all samples that had treatment1
   Mean_CT_for_treatment2 <- mean(as.numeric(as.character(All_treatment2_Samples$Ct), NA == "Undetermined"),
-                                 na.rm = TRUE)
-  Delta1 <- abs(Mean_CT_for_treatment2 - Mean_CT_for_treatment1)
-  print("This is the delta of treatments for your gene of interest")
-  print(Delta1)
-  if (control_gene3 != FALSE) {
-    Find_All_Control_Gene_Samples1 <- grep(control_gene, data$Sample.Name)
-    All_Control_Gene_Samples1 <- data[Find_All_Control_Gene_Samples1,]
-    Find_All_Control_Gene_Samples2 <- grep(control_gene2, data$Sample.Name)
-    All_Control_Gene_Samples2 <- data[Find_All_Control_Gene_Samples2,]
-    Find_All_Control_Gene_Samples3 <- grep(control_gene3, data$Sample.Name)
-    All_Control_Gene_Samples3 <- data[Find_All_Control_Gene_Samples3,]
+                                 na.rm = TRUE)#finds the mean Ct for all samples that had treatment2
+  Delta1 <- abs(Mean_CT_for_treatment2 - Mean_CT_for_treatment1)#finds the absolute value of the difference between Mean_CT_for_treatment1 and Mean_CT_for_treatment2
+  print("This is the delta of treatments for your gene of interest")#prints text
+  print(Delta1)#prints the delta for your gene of interest
+  if (control_gene3 != FALSE) {#lines 54-81 will only be executed if the user defines the control_gene, control_gene2 and control_gene3 arguments
+    Find_All_Control_Gene_Samples1 <- grep(control_gene, data$Sample.Name)#finds all samples matching control_gene
+    All_Control_Gene_Samples1 <- data[Find_All_Control_Gene_Samples1,]#indexes by samples matching control_gene
+    Find_All_Control_Gene_Samples2 <- grep(control_gene2, data$Sample.Name)#finds all samples matching control_gene2
+    All_Control_Gene_Samples2 <- data[Find_All_Control_Gene_Samples2,]#indexes by samples matching control_gene2
+    Find_All_Control_Gene_Samples3 <- grep(control_gene3, data$Sample.Name)#indexes by samples matching control_gene3
+    All_Control_Gene_Samples3 <- data[Find_All_Control_Gene_Samples3,]#indexes by samples matching control_gene3
     All_Control_Gene_Samples <- rbind(All_Control_Gene_Samples1, All_Control_Gene_Samples2, 
-                                      All_Control_Gene_Samples3)
-    Find_Specific_Time <- grep(time_point, All_Control_Gene_Samples$Sample.Name)
-    All_Control_Gene_Samples_At_Specific_Time <- All_Control_Gene_Samples[Find_Specific_Time,]
-    Find_All_treatment1 <- grep(treatment1, All_Control_Gene_Samples_At_Specific_Time$Sample.Name)
-    All_treatment1_Samples <- All_Control_Gene_Samples_At_Specific_Time[Find_All_treatment1,]
-    Find_All_treatment2 <-grep(treatment2, All_Control_Gene_Samples_At_Specific_Time$Sample.Name)
-    All_treatment2_Samples <- All_Control_Gene_Samples_At_Specific_Time[Find_All_treatment2,]
+                                      All_Control_Gene_Samples3)#combines the rows of All_Control_Gene_Samples1,All_Control_Gene_Samples2, and All_Control_Gene_Samples3
+    Find_Specific_Time <- grep(time_point, All_Control_Gene_Samples$Sample.Name)#finds data for a specified time point in All_Control_Gene_Samples
+    All_Control_Gene_Samples_At_Specific_Time <- All_Control_Gene_Samples[Find_Specific_Time,]#indexes by time in All_Control_Gene_Samples
+    Find_All_treatment1 <- grep(treatment1, All_Control_Gene_Samples_At_Specific_Time$Sample.Name)#finds samples that match treatment1 in All_Control_Gene_Samples
+    All_treatment1_Samples <- All_Control_Gene_Samples_At_Specific_Time[Find_All_treatment1,]#indexes by treatment1 in All_Control_Gene_Samples
+    Find_All_treatment2 <-grep(treatment2, All_Control_Gene_Samples_At_Specific_Time$Sample.Name)#finds samples that match treatment2 in All_Control_Gene_Samples
+    All_treatment2_Samples <- All_Control_Gene_Samples_At_Specific_Time[Find_All_treatment2,]#indexes by treatment2 in All_Control_Gene_Samples
     Mean_CT_for_treatment1 <- mean(as.numeric(as.character(All_treatment1_Samples$Ct), NA == "Undetermined"),
-                                   na.rm = TRUE)
+                                   na.rm = TRUE)#finds mean Ct for all samples that had treatement1
     Mean_CT_for_treatment2 <- mean(as.numeric(as.character(All_treatment2_Samples$Ct), NA == "Undetermined"),
-                                   na.rm = TRUE)
-    Delta2 <- abs(Mean_CT_for_treatment2 - Mean_CT_for_treatment1)
-    print("This is the delta of treatments for your control gene")
-    print(Delta2)
-    Double_Delta <- abs(Delta1 - Delta2)
-    print("this is your double delta Ct", Double_Delta)
-    print(Double_Delta)
-    Fold_induction <- 2^Double_Delta
-    print("This is the fold induction for your gene of interest")
-    print(Fold_induction)
-    return(Fold_induction)
+                                   na.rm = TRUE)#finds the mean Ct for all samples that had treatment2
+    Delta2 <- abs(Mean_CT_for_treatment2 - Mean_CT_for_treatment1)#finds the absolute value of the difference between Mean_CT_for_treatment1 and Mean_CT_for_treatment2
+    print("This is the delta of treatments for your control gene")#prints text
+    print(Delta2)#prints the delta for your control genes
+    Double_Delta <- abs(Delta1 - Delta2)#finds the absolute value of the difference between Delta1 and Delta2
+    print("this is your double delta Ct")#prints text
+    print(Double_Delta)#prints Double_Delta
+    Fold_induction <- 2^Double_Delta #Finds the fold change
+    print("This is the fold change for your gene of interest") #prints text
+    print(Fold_induction)#prints Fold_induction
+    return(Fold_induction)#returns Fold_induction
   } else {
-    if (control_gene2 != FALSE) {
-      Find_All_Control_Gene_Samples1 <- grep(control_gene, data$Sample.Name)
-      All_Control_Gene_Samples1 <- data[Find_All_Control_Gene_Samples1,]
-      Find_All_Control_Gene_Samples2 <- grep(control_gene2, data$Sample.Name)
-      All_Control_Gene_Samples2 <- data[Find_All_Control_Gene_Samples2,]
-      All_Control_Gene_Samples <- rbind(All_Control_Gene_Samples1, All_Control_Gene_Samples2)
-      Find_Specific_Time <- grep(time_point, All_Control_Gene_Samples$Sample.Name)
-      All_Control_Gene_Samples_At_Specific_Time <- All_Control_Gene_Samples[Find_Specific_Time,]
-      Find_All_treatment1 <- grep(treatment1, All_Control_Gene_Samples_At_Specific_Time$Sample.Name)
-      All_treatment1_Samples <- All_Control_Gene_Samples_At_Specific_Time[Find_All_treatment1,]
-      Find_All_treatment2 <-grep(treatment2, All_Control_Gene_Samples_At_Specific_Time$Sample.Name)
-      All_treatment2_Samples <- All_Control_Gene_Samples_At_Specific_Time[Find_All_treatment2,]
+    if (control_gene2 != FALSE) {#lines 84-108 will only be executed if the user only defines the control_gene and control_gene2 arguments
+      Find_All_Control_Gene_Samples1 <- grep(control_gene, data$Sample.Name)#finds all samples matching control_gene
+      All_Control_Gene_Samples1 <- data[Find_All_Control_Gene_Samples1,]#indexes by samples matching control_gene
+      Find_All_Control_Gene_Samples2 <- grep(control_gene2, data$Sample.Name)#finds all samples matching control_gene2
+      All_Control_Gene_Samples2 <- data[Find_All_Control_Gene_Samples2,]#indexes by samples matching control_gene2
+      All_Control_Gene_Samples <- rbind(All_Control_Gene_Samples1, All_Control_Gene_Samples2)#combines the rows of All_Control_Gene_Samples1 and All_Control_Gene_Samples2,
+      Find_Specific_Time <- grep(time_point, All_Control_Gene_Samples$Sample.Name)#finds data for a specified time point in All_Control_Gene_Samples
+      All_Control_Gene_Samples_At_Specific_Time <- All_Control_Gene_Samples[Find_Specific_Time,]#indexes by time in All_Control_Gene_Samples
+      Find_All_treatment1 <- grep(treatment1, All_Control_Gene_Samples_At_Specific_Time$Sample.Name)#finds samples that match treatment1 in All_Control_Gene_Samples
+      All_treatment1_Samples <- All_Control_Gene_Samples_At_Specific_Time[Find_All_treatment1,]#indexes by treatment1 in All_Control_Gene_Samples
+      Find_All_treatment2 <-grep(treatment2, All_Control_Gene_Samples_At_Specific_Time$Sample.Name)#finds samples that match treatment2 in All_Control_Gene_Samples
+      All_treatment2_Samples <- All_Control_Gene_Samples_At_Specific_Time[Find_All_treatment2,]#indexes by treatment2 in All_Control_Gene_Samples
       Mean_CT_for_treatment1 <- mean(as.numeric(as.character(All_treatment1_Samples$Ct), NA == "Undetermined"),
-                                     na.rm = TRUE)
+                                     na.rm = TRUE)#finds mean Ct for all samples that had treatement1
       Mean_CT_for_treatment2 <- mean(as.numeric(as.character(All_treatment2_Samples$Ct), NA == "Undetermined"),
-                                     na.rm = TRUE)
-      Delta2 <- abs(Mean_CT_for_treatment2 - Mean_CT_for_treatment1)
-      print("This is the delta of treatments for your control gene")
-      print(Delta2)
-      Double_Delta <- abs(Delta1 - Delta2)
-      print("this is your double delta Ct", Double_Delta)
-      print(Double_Delta)
-      Fold_induction <- 2^Double_Delta
-      print("This is the fold induction for your gene of interest")
-      print(Fold_induction)
-      return(Fold_induction) #return will end your function
-    }
-    Find_All_Control_Gene_Samples <- grep(control_gene, data$Sample.Name)
-    All_Control_Gene_Samples <- data[Find_All_Control_Gene_Samples,]
-    Find_Specific_Time <- grep(time_point, All_Control_Gene_Samples$Sample.Name)
-    All_Control_Gene_Samples_At_Specific_Time <- All_Control_Gene_Samples[Find_Specific_Time,]
-    Find_All_treatment1 <- grep(treatment1, All_Control_Gene_Samples_At_Specific_Time$Sample.Name)
-    All_treatment1_Samples <- All_Control_Gene_Samples_At_Specific_Time[Find_All_treatment1,]
-    Find_All_treatment2 <-grep(treatment2, All_Control_Gene_Samples_At_Specific_Time$Sample.Name)
-    All_treatment2_Samples <- All_Control_Gene_Samples_At_Specific_Time[Find_All_treatment2,]
+                                     na.rm = TRUE)#finds mean Ct for all samples that had treatement2
+      Delta2 <- abs(Mean_CT_for_treatment2 - Mean_CT_for_treatment1)#finds the absolute value of the difference between Mean_CT_for_treatment1 and Mean_CT_for_treatment2
+      print("This is the delta of treatments for your control gene")#prints text
+      print(Delta2)#prints the delta for your control genes
+      Double_Delta <- abs(Delta1 - Delta2)#finds the absolute value of the difference between Delta1 and Delta2
+      print("this is your double delta Ct")#prints text
+      print(Double_Delta)#prints Double_Delta
+      Fold_induction <- 2^Double_Delta#Finds the fold change
+      print("This is the fold change for your gene of interest")#prints text
+      print(Fold_induction)#prints Fold_induction
+      return(Fold_induction)#returns Fold_induction
+    }#lines 110-131 will only be executed if the user only defines the control_gene
+    Find_All_Control_Gene_Samples <- grep(control_gene, data$Sample.Name)#finds all samples matching control_gene
+    All_Control_Gene_Samples <- data[Find_All_Control_Gene_Samples,]#indexes by samples matching control_gene
+    Find_Specific_Time <- grep(time_point, All_Control_Gene_Samples$Sample.Name)#finds data for a specified time point in All_Control_Gene_Samples
+    All_Control_Gene_Samples_At_Specific_Time <- All_Control_Gene_Samples[Find_Specific_Time,]#indexes by time in All_Control_Gene_Samples
+    Find_All_treatment1 <- grep(treatment1, All_Control_Gene_Samples_At_Specific_Time$Sample.Name)#finds samples that match treatment1 in All_Control_Gene_Samples
+    All_treatment1_Samples <- All_Control_Gene_Samples_At_Specific_Time[Find_All_treatment1,]#indexes by treatment1 in All_Control_Gene_Samples
+    Find_All_treatment2 <-grep(treatment2, All_Control_Gene_Samples_At_Specific_Time$Sample.Name)#finds samples that match treatment2 in All_Control_Gene_Samples
+    All_treatment2_Samples <- All_Control_Gene_Samples_At_Specific_Time[Find_All_treatment2,]#indexes by treatment2 in All_Control_Gene_Samples
     Mean_CT_for_treatment1 <- mean(as.numeric(as.character(All_treatment1_Samples$Ct), NA == "Undetermined"),
-                                   na.rm = TRUE)
+                                   na.rm = TRUE)#finds mean Ct for all samples that had treatement1
     Mean_CT_for_treatment2 <- mean(as.numeric(as.character(All_treatment2_Samples$Ct), NA == "Undetermined"),
-                                   na.rm = TRUE)
-    Delta2 <- abs(Mean_CT_for_treatment2 - Mean_CT_for_treatment1)
-    print("This is the delta of treatments for your control gene(s)")
-    print(Delta2)
-    Double_Delta <- abs(Delta1 - Delta2)
-    print("this is your double delta Ct", Double_Delta)
-    print(Double_Delta)
-    Fold_induction <- 2^Double_Delta
-    print("This is the fold induction for your gene of interest")
-    print(Fold_induction)
-    return(Fold_induction)
+                                   na.rm = TRUE)#finds mean Ct for all samples that had treatement2
+    Delta2 <- abs(Mean_CT_for_treatment2 - Mean_CT_for_treatment1)#finds the absolute value of the difference between Mean_CT_for_treatment1 and Mean_CT_for_treatment2
+    print("This is the delta of treatments for your control gene(s)")#prints text
+    print(Delta2)#prints the delta for your control gene
+    Double_Delta <- abs(Delta1 - Delta2)#finds the absolute value of the difference between Delta1 and Delta2
+    print("this is your double delta Ct")#prints text
+    print(Double_Delta)#prints Double_Delta
+    Fold_induction <- 2^Double_Delta#Finds the fold change
+    print("This is the fold induction for your gene of interest")#prints text
+    print(Fold_induction)#prints Fold_induction
+    return(Fold_induction)#returns Fold_induction
   }
 }
 
-combine_folds <- function(f1, new_file, gene_names){ #new_file and gene_names need to be in quotes. 
-  outcon <- file(new_file, open = "w")
-  Fold_Induction <- as.character(f1)
-  writeLines(Fold_Induction, outcon)
-  close(outcon)
-  read <- read.csv(new_file, header = FALSE)
-  read$Gene_Name <- c(gene_names)
-  read$Fold_change <- read$V1
-  read2 <- read[,-1]
-  write.csv(read2,new_file, row.names = FALSE)
-  return(read2)
+combine_folds <- function(Fold, new_file, gene_names){  
+  outcon <- file(new_file, open = "w")#creates a new file with a name matching new_file and opens a writing connection to it
+  Fold_Induction <- as.character(Fold)#converts Fold from numeric class to the character class
+  writeLines(Fold_Induction, outcon)#added fold data to new_file 
+  close(outcon)#closes connection to new_file
+  read <- read.csv(new_file, header = FALSE)#new_file is read in
+  read$Gene_Name <- c(gene_names)#New column with gene_names is added
+  read$Fold_change <- read$V1#New column with with the fold change data is added so data is to the right of Gene_Name
+  read2 <- read[,-1] #removes the first column
+  write.csv(read2,new_file, row.names = FALSE)#creates a csv file in the containing all descriptions associatied with the fold changes
+  return(read2)#data frame returned
 }
