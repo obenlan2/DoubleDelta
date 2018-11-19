@@ -5,7 +5,7 @@
 Calculate Fold Changes for RT-qPCR Data
 }
 \description{
-The Ct values from a specified gene of interest (GOI) for two specified treatments will be extracted, the mean Ct for both treatments will be calculated, and the delta Ct value between the treatments will be calculated. The same will be done for a specified reference gene(s). This function can normalize the GOI delta Ct with up to three reference genes. The delta Ct of the reference gene(s) will be used to normalize the delta Ct of the GOI and generate the double delta Ct. The double delta Ct will be used to calculate the fold change. Delta and double delta Cts for the GOI and the reference gene(s), will be printed along with the fold change which will be returned at the end of the function. 
+The Ct values from a specified gene of interest (GOI) for two specified treatments will be extracted, the mean Ct for both treatments will be calculated, and the delta Ct value between the treatments will be calculated. The same will be done for a specified reference gene(s). This function can normalize the GOI delta Ct with up to three reference genes. The delta Ct of the reference gene(s) will be used to normalize the delta Ct of the GOI and generate the double delta Ct. The double delta Ct will be used to calculate the fold change. Delta and double delta Cts for the GOI and the reference gene(s) will be printed along with the fold change which will be returned at the end of the function. 
 }
 \usage{
 deltas(data, gene_name, time_point, treatment1, treatment2, control_gene, control_gene2 = FALSE, control_gene3 = FALSE)
@@ -41,11 +41,7 @@ The name of the third control gene used in the experiment. Needs to be in quotes
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+Delta and double delta Cts for the GOI and the reference gene(s) will be printed along with the fold change in order to view results of the calculations. However, the fold change (which is in the numeric class) is the only value returned with the return function and qwhen pointing the function to a name, the fold change will be the only value that will be associated with the given name.
 }
 \references{
 %% ~put references to the literature/web site here ~
