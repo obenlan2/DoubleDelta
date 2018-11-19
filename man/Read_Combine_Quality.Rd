@@ -29,11 +29,7 @@ The name the user would like the new file to be called. This should be in quoute
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+This function returns a data frame.
 }
 \references{
 %% ~put references to the literature/web site here ~
