@@ -142,5 +142,5 @@ combine_folds <- function(Fold, new_file, gene_names){
   read$Fold_change <- read$V1#New column with with the fold change data is added so data is to the right of Gene_Name
   read2 <- read[,-1] #removes the first column
   write.csv(read2,new_file, row.names = FALSE)#creates a csv file in the containing all descriptions associatied with the fold changes
-  return(read2)#data frame returned
+  return(read2)#a data frame returned
 }
