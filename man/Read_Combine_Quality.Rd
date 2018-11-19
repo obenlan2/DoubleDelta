@@ -47,9 +47,9 @@ This function returns a data frame.
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-mypath <- system.file("extdata", "example1", package = "DoubleDelta_0.0.tar.gz")
-
-
+data <- system.file("extdata", "example1", package = "DoubleDelta_0.0.tar.gz")
+data2 <- system.file("extdata", "example2", package = "DoubleDelta_0.0.tar.gz")
+data3 <- system.file("extdata", "example3", package = "DoubleDelta_0.0.tar.gz")
 
 
 
