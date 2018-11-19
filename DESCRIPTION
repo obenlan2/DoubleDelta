@@ -1,0 +1,11 @@
+Package: DoubleDelta
+Version: 0.0
+Date: 2018-11-30
+Title: Calculations for the Double Delta Ct Method
+Authors@R: person("Olivia", "Obenland", role = c("aut", "cre"),
+                  email = "obenlan2@illinois.edu")
+Author: Olivia Obenland [aut, cre]
+Maintainer: Olivia Obenland <obenlan2@illinois.edu>
+Description: This package includes functions to calculate fold changes for RT-qPCR data.
+Url: https://github.com/obenlan2/DoubleDelta
+License: GPL-2
