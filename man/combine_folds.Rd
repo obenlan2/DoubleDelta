@@ -2,35 +2,31 @@
 \alias{combine_folds}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+Combine Results from Deltas Function into One CSV File
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Output taken from the deltas function and adds it to a new CSV file that is named by the user. The user will can also to add labels for each of the fold changes.
 }
 \usage{
-combine_folds(f1, new_file, gene_names)
+combine_folds(Fold, new_file, gene_names)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{f1}{
-%%     ~~Describe \code{f1} here~~
+  \item{Fold}{
+Fold change results from the Deltas function. Users can use a single result or a vector of results in this argument.
 }
   \item{new_file}{
-%%     ~~Describe \code{new_file} here~~
+Name of the new CSV file. Must be in quotes and have the .csv extension.
 }
   \item{gene_names}{
-%%     ~~Describe \code{gene_names} here~~
+A character string containing descriptive information about the fold changes.
 }
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+This function returns a data frame.
 }
 \references{
 %% ~put references to the literature/web site here ~
@@ -53,10 +49,10 @@ combine_folds(f1, new_file, gene_names)
 ##--	or do  help(data=index)  for the standard data sets.
 
 ## The function is currently defined as
-function (f1, new_file, gene_names) 
+function (Fold, new_file, gene_names) 
 {
     outcon <- file(new_file, open = "w")
-    Fold_Induction <- as.character(f1)
+    Fold_Induction <- as.character(Fold)
     writeLines(Fold_Induction, outcon)
     close(outcon)
     read <- read.csv(new_file, header = FALSE)
