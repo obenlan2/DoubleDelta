@@ -47,6 +47,14 @@ This function returns a data frame.
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
+mypath <- system.file("extdata", "example1", package = "DoubleDelta_0.0.tar.gz")
+mypath2 <- system.file("extdata", "example1", package = "DoubleDelta_0.0.tar.gz")
+mypath3 <- system.file("extdata", "example1", package = "DoubleDelta_0.0.tar.gz")
+
+data1 <- read.table(mypath)
+data2 <- read.table(mypath2)
+data3 <- read.table(mypath3)
+
 ##---- Should be DIRECTLY executable !! ----
 ##-- ==>  Define data, use random,
 ##--	or do  help(data=index)  for the standard data sets.

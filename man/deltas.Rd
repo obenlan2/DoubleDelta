@@ -59,6 +59,9 @@ Delta and double delta Cts for the GOI and the reference gene(s) will be printed
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
+mypath <- system.file("extdata", "example1", package = "DoubleDelta_0.0.tar.gz")
+data1 <- read.table(mypath)
+
 ##---- Should be DIRECTLY executable !! ----
 ##-- ==>  Define data, use random,
 ##--	or do  help(data=index)  for the standard data sets.
