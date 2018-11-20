@@ -44,24 +44,15 @@ This function returns a data frame.
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
+data <- system.file("extdata", "example1", package = "DoubleDelta_0.0.tar.gz")
+mydata1 <- read.table(data)
+data3 <- system.file("extdata", "example3", package = "DoubleDelta_0.0.tar.gz")
+mydata2 <- read.table(data2)
 
-## The function is currently defined as
-function (Fold, new_file, gene_names) 
-{
-    outcon <- file(new_file, open = "w")
-    Fold_Induction <- as.character(Fold)
-    writeLines(Fold_Induction, outcon)
-    close(outcon)
-    read <- read.csv(new_file, header = FALSE)
-    read$Gene_Name <- c(gene_names)
-    read$Fold_change <- read$V1
-    read2 <- read[, -1]
-    write.csv(read2, new_file, row.names = FALSE)
-    return(read2)
-  }
+a <- deltas(mydata1, "Gene1", "6HAT", "UT", "ST", "BTUB", "GTPB", "GAPDH")
+b <- deltas(mypath2, "Gene1", "12HAT", "UT", "ST", "BTUB", "GTPB", "GAPDH")
+
+combine_folds(c(a,b), "All_Data.csv", c("Gene1 6HAT", "Gene2 12HAT"))
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
