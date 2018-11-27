@@ -22,23 +22,10 @@ Name of the new CSV file. Must be in quotes and have the .csv extension.
 A character string containing descriptive information about the fold changes.
 }
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
+
 \value{
 This function returns a data frame.
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
-\author{
-%%  ~~who you are~~
-}
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~
@@ -54,7 +41,4 @@ b <- deltas(data3, "Gene1", "12HAT", "UT", "ST", "BTUB", "GTPB", "GAPDH")
 
 combine_folds(c(a,b), "All_Data.csv", c("Gene1 6HAT", "Gene2 12HAT"))
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+

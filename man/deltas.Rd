@@ -37,23 +37,9 @@ The name of the second control gene used in the experiment. Needs to be in quote
 The name of the third control gene used in the experiment. Needs to be in quotes.
 }
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
 \value{
 Delta and double delta Cts for the GOI and the reference gene(s) will be printed along with the fold change in order to view results of the calculations. However, the fold change (which is in the numeric class) is the only value returned with the return function and qwhen pointing the function to a name, the fold change will be the only value that will be associated with the given name.
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
-\author{
-%%  ~~who you are~~
-}
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~
@@ -68,7 +54,4 @@ deltas(data, "Gene1", "12HAT", "UT", "ST", "BTUB", "GTPB")
 #Using one reference gene
 deltas(data, "Gene1", "12HAT", "UT", "ST", "BTUB")
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+
