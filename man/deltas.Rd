@@ -61,8 +61,12 @@ Delta and double delta Cts for the GOI and the reference gene(s) will be printed
 \examples{
 mypath <- system.file("extdata", "example1.csv", package = "DoubleDelta")
 data <- read.csv(mypath)
+#Using three reference genes
 deltas(data, "Gene1", "12HAT", "UT", "ST", "BTUB", "GTPB", "GAPDH")
-
+#Using two reference genes
+deltas(data, "Gene1", "12HAT", "UT", "ST", "BTUB", "GTPB")
+#Using one reference gene
+deltas(data, "Gene1", "12HAT", "UT", "ST", "BTUB")
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

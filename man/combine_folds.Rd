@@ -44,15 +44,15 @@ This function returns a data frame.
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-#data <- system.file("extdata", "example1.csv", package = "DoubleDelta")
+mypath1 <- system.file("extdata", "example1.csv", package = "DoubleDelta")
+mypath3 <- system.file("extdata", "example3.csv", package = "DoubleDelta")
+data1 <- read.csv(mypath1)
+data3 <- read.csv(mypath3)
 
-#data3 <- system.file("extdata", "example3.csv", package = "DoubleDelta")
+a <- deltas(data1, "Gene1", "6HAT", "UT", "ST", "BTUB", "GTPB", "GAPDH")
+b <- deltas(data3, "Gene1", "12HAT", "UT", "ST", "BTUB", "GTPB", "GAPDH")
 
-
-#a <- deltas(data, "Gene1", "6HAT", "UT", "ST", "BTUB", "GTPB", "GAPDH")
-#b <- deltas(data3, "Gene1", "12HAT", "UT", "ST", "BTUB", "GTPB", "GAPDH")
-
-#combine_folds(c(a,b), "All_Data.csv", c("Gene1 6HAT", "Gene2 12HAT"))
+combine_folds(c(a,b), "All_Data.csv", c("Gene1 6HAT", "Gene2 12HAT"))
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
