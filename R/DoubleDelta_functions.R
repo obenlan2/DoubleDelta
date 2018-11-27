@@ -5,34 +5,42 @@ Read_Combine_Quality <- function(File1, File2 = FALSE, File3 = FALSE, New_name.c
     Data3 <- read.csv(File3 )#reads in the third CSV file
     All_data <- rbind(Data1, Data2, Data3) #combines the rows of Data1, Data2, and Data3
     Remove_undetermined <- All_data[which(All_data$Ct != "Undetermined"),] #indexes the results of All_data by Ct values that don't equal "Undetermined"
+    write.csv(Remove_undetermined, New_name.csv) #creates a new csv file with a name given by the user 
     if(any(Remove_undetermined$NAW == 'TRUE')){#lines 8-9 send a warning message if NAWs were detected
       warning("Non-Amplified Well (NAW) was TRUE for values. Consider removing them.")
-      write.csv(Remove_undetermined, New_name.csv) #creates a new csv file with a name given by the user 
-      return(Remove_undetermined) #returns a data frame
     }
-    
+    return(Remove_undetermined) #returns a data frame
   } else {
     if (File2 != FALSE) {#lines 16-23 will only be executed if the user defines the File1 and File2 arguments
       Data1 <- read.csv(File1)#reads in the first CSV file
       Data2 <- read.csv(File2)#reads in the second CSV file
       All_data <- rbind(Data1, Data2)#combines the rows of Data1 and Data2 
       Remove_undetermined <- All_data[which(All_data$Ct != "Undetermined"),]#indexes the results of All_data by Ct values that don't equal "Undetermined"
+      write.csv(Remove_undetermined, New_name.csv)#creates a new csv file with a name given by the user
       if(any(Remove_undetermined$NAW == 'TRUE')){#lines 20-21 send a warning message if NAWs were detected
         warning("Non-Amplified Well (NAW) was TRUE for values. Consider removing them.")
-        write.csv(Remove_undetermined, New_name.csv)#creates a new csv file with a name given by the user
-        return(Remove_undetermined)#returns a data frame
       }
+      return(Remove_undetermined)#returns a data frame
     }
   }
   #lines 28-33 will only be executed if the user defines onle the File1 argument
   Data <- read.csv(File1)#reads in the first CSV file
   Remove_undetermined <- Data[which(Data$Ct != "Undetermined"),]#indexes the results of All_data by Ct values that don't equal "Undetermined"
+  write.csv(Remove_undetermined, New_name.csv)#creates a new csv file with a name given by the user
   if(any(Remove_undetermined$NAW == 'TRUE')){#lines 30-31 send a warning message if NAWs were detected
     warning("Non-Amplified Well (NAW) was TRUE for values. Consider removing them.")
-    write.csv(Remove_undetermined, New_name.csv)#creates a new csv file with a name given by the user
-    return(Remove_undetermined)#returns a data frame
   }
+  return(Remove_undetermined)#returns a data frame
 }
+
+Data <- read.csv("C:/Users/obenlan2/Documents/R Project Functions/qRT-PCR_Results.csv")#reads in the first CSV file
+Remove_undetermined <- Data[which(Data$Ct != "Undetermined"),]#indexes the results of All_data by Ct values that don't equal "Undetermined"
+write.csv(Remove_undetermined, "New_name.csv")#creates a new csv file with a name given by the user
+return(Remove_undetermined)#returns a data frame
+if(any(Remove_undetermined$NAW == 'TRUE')){#lines 30-31 send a warning message if NAWs were detected
+  warning("Non-Amplified Well (NAW) was TRUE for values. Consider removing them.")
+}
+return(Remove_undetermined)#returns a data frame
 
 deltas <- function(data, gene_name, time_point, treatment1, treatment2, control_gene, control_gene2 = FALSE, control_gene3 = FALSE){
   Find_All_Gene_Samples <- grep(gene_name, data$Sample.Name) #finds all samples matching gene_name

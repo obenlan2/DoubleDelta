@@ -47,15 +47,15 @@ This function returns a data frame.
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-#data <- system.file("extdata", "example1.csv", package = "DoubleDelta")
-#data2 <- system.file("extdata", "example2.csv", package = "DoubleDelta")
-#data3 <- system.file("extdata", "example3.csv", package = "DoubleDelta")
+data <- system.file("extdata", "example1.csv", package = "DoubleDelta")
+data2 <- system.file("extdata", "example2.csv", package = "DoubleDelta")
+data3 <- system.file("extdata", "example3.csv", package = "DoubleDelta")
 ##combining three files
-#Read_Combine_Quality(File1 = data, File2 = data2, File3 = data3, "NewFile.csv")
+Read_Combine_Quality(File1 = data, File2 = data2, File3 = data3, "NewFile.csv")
 ##combining two files
-#Read_Combine_Quality(File1 = data, File2 = data2, New_name.csv = "NewFile2.csv")
+Read_Combine_Quality(File1 = data, File2 = data2, New_name.csv = "NewFile2.csv")
 ##inputing one file
-#Read_Combine_Quality(File1 = data, New_name.csv = "NewFile3.csv")
+Read_Combine_Quality(File1 = data, New_name.csv = "NewFile3.csv")
 }
 
 % Add one or more standard keywords, see file 'KEYWORDS' in the
