@@ -33,14 +33,6 @@ Read_Combine_Quality <- function(File1, File2 = FALSE, File3 = FALSE, New_name.c
   return(Remove_undetermined)#returns a data frame
 }
 
-Data <- read.csv("C:/Users/obenlan2/Documents/R Project Functions/qRT-PCR_Results.csv")#reads in the first CSV file
-Remove_undetermined <- Data[which(Data$Ct != "Undetermined"),]#indexes the results of All_data by Ct values that don't equal "Undetermined"
-write.csv(Remove_undetermined, "New_name.csv")#creates a new csv file with a name given by the user
-return(Remove_undetermined)#returns a data frame
-if(any(Remove_undetermined$NAW == 'TRUE')){#lines 30-31 send a warning message if NAWs were detected
-  warning("Non-Amplified Well (NAW) was TRUE for values. Consider removing them.")
-}
-return(Remove_undetermined)#returns a data frame
 
 deltas <- function(data, gene_name, time_point, treatment1, treatment2, control_gene, control_gene2 = FALSE, control_gene3 = FALSE){
   Find_All_Gene_Samples <- grep(gene_name, data$Sample.Name) #finds all samples matching gene_name
