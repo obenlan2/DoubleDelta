@@ -59,9 +59,9 @@ Delta and double delta Cts for the GOI and the reference gene(s) will be printed
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-#mypath <- system.file("extdata", "example1.csv", package = "DoubleDelta")
-
-#deltas(mypath, "Gene1", "12HAT", "UT", "ST", "BTUB", "GTPB", "GAPDH")
+mypath <- system.file("extdata", "example1.csv", package = "DoubleDelta")
+data <- read.csv(mypath)
+deltas(data, "Gene1", "12HAT", "UT", "ST", "BTUB", "GTPB", "GAPDH")
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
