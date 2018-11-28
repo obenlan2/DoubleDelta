@@ -28,7 +28,8 @@ This function returns a data frame.
 }
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link{deltas}}
+\code{\link{Read_Combine_Quality}}
 }
 \examples{
 mypath1 <- system.file("extdata", "example1.csv", package = "DoubleDelta")

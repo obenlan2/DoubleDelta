@@ -42,7 +42,8 @@ Delta and double delta Cts for the GOI and the reference gene(s) will be printed
 }
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link{Read_Combine_Quality}}
+\code{\link{combine_folds}}
 }
 \examples{
 mypath <- system.file("extdata", "example1.csv", package = "DoubleDelta")

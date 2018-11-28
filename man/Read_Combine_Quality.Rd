@@ -30,7 +30,8 @@ This function returns a data frame.
 }
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link{deltas}}
+\code{\link{combine_folds}}
 }
 \examples{
 data <- system.file("extdata", "example1.csv", package = "DoubleDelta")
