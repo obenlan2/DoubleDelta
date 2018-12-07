@@ -26,7 +26,7 @@ The name the user would like the new file to be called. This should be in quoute
 }
 }
 \value{
-This function returns a data frame.
+This function returns a data frame. Column and row names will be identical to the inputted files and any rows that had "Undetermined" results for the Ct value will be removed. Any blank columns will have "NA".
 }
 
 \seealso{
@@ -37,6 +37,25 @@ This function returns a data frame.
 data <- system.file("extdata", "example1.csv", package = "DoubleDelta")
 data2 <- system.file("extdata", "example2.csv", package = "DoubleDelta")
 data3 <- system.file("extdata", "example3.csv", package = "DoubleDelta")
+
+#Making Temporary Files Located in Temp Directory
+outfile1 <- tempfile(fileext = "NewFile.csv")
+outfile2 <- tempfile(fileext = "NewFile2.csv")
+outfile3 <- tempfile(fileext = "NewFile3.csv")
+
+
+#Run this code to put "NewFile.csv", "NewFile2.csv", or "NewFile3.csv" in the file in the Temp Directory
+
+##combining three files
+Read_Combine_Quality(File1 = data, File2 = data2, File3 = data3, outfile1)
+##combining two files
+Read_Combine_Quality(File1 = data, File2 = data2, New_name.csv = outfile2)
+##inputing one file
+Read_Combine_Quality(File1 = data, New_name.csv = outfile3)
+
+\dontrun{
+#Run this code to view "NewFile.csv", "NewFile2.csv", or "NewFile3.csv" in your directory
+
 ##combining three files
 Read_Combine_Quality(File1 = data, File2 = data2, File3 = data3, "NewFile.csv")
 ##combining two files
@@ -44,4 +63,7 @@ Read_Combine_Quality(File1 = data, File2 = data2, New_name.csv = "NewFile2.csv")
 ##inputing one file
 Read_Combine_Quality(File1 = data, New_name.csv = "NewFile3.csv")
 }
+
+}
+
 

@@ -13,7 +13,7 @@ deltas(data, gene_name, time_point, treatment1, treatment2, control_gene, contro
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{data}{
-A CSV file containing RT-qPCR results generated from SDS 2.3 software or a data frame generated from the Read_Combine_Quality function.
+This is a data frame imported from a CSV file containing RT-qPCR results generated from SDS 2.3 software or a data frame generated from the Read_Combine_Quality function.
 }
   \item{gene_name}{
 The name of the user's GOI. Needs to be in quotes.
@@ -22,10 +22,10 @@ The name of the user's GOI. Needs to be in quotes.
 The name of the user's time-point of interest. Needs to be in quotes.
 }
   \item{treatment1}{
-The name of the user's treatment. Needs to be in quotes.
+The name of the user's treatment being compared to treatment2. The name needs to be in quotes. 
 }
   \item{treatment2}{
-The name of the user's treatment. Needs to be in quotes.
+The name of the user's treatment being compared to treatment1. The name needs to be in quotes. 
 }
   \item{control_gene}{
 The name of one control gene used in the experiment. Needs to be in quotes.

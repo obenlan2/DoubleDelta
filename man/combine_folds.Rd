@@ -24,7 +24,7 @@ A character string containing descriptive information about the fold changes.
 }
 
 \value{
-This function returns a data frame.
+This function returns a data frame that contains two columns denoted as "Gene_Name" and "Fold_change". The information inputted to the gene_names argument will be in the "Gene_Name" column and the data inputted to the Fold argument will be in the "Fold_change" column.
 }
 
 \seealso{
@@ -40,6 +40,16 @@ data3 <- read.csv(mypath3)
 a <- deltas(data1, "Gene1", "6HAT", "UT", "ST", "BTUB", "GTPB", "GAPDH")
 b <- deltas(data3, "Gene1", "12HAT", "UT", "ST", "BTUB", "GTPB", "GAPDH")
 
+#Making Temporary File Located in Temp Directory
+outfile1 <- tempfile(fileext = "All_Data.csv")
+
+#Run this code to put "All_Data.csv" file in the Temp Directory
+combine_folds(c(a,b), outfile1, c("Gene1 6HAT", "Gene2 12HAT"))
+
+\dontrun{
+#Run this code if you want to view the file in your directory
 combine_folds(c(a,b), "All_Data.csv", c("Gene1 6HAT", "Gene2 12HAT"))
 }
+}
+
 
