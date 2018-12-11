@@ -31,10 +31,10 @@ The name of the user's treatment being compared to treatment1. The name needs to
 The name of one control gene used in the experiment. Needs to be in quotes.
 }
   \item{control_gene2}{
-The name of the second control gene used in the experiment. Needs to be in quotes.
+The name of the second control gene used in the experiment. Needs to be in quotes. Default value is FALSE.
 }
   \item{control_gene3}{
-The name of the third control gene used in the experiment. Needs to be in quotes.
+The name of the third control gene used in the experiment. Needs to be in quotes. Default value is FALSE.
 }
 }
 \value{

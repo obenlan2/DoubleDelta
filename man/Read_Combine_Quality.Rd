@@ -26,7 +26,7 @@ The name the user would like the new file to be called. This should be in quoute
 }
 }
 \value{
-This function returns a data frame. Column and row names will be identical to the inputted files and any rows that had "Undetermined" results for the Ct value will be removed. Any blank columns will have "NA".
+This function returns a data frame. Column and row names will be identical to the inputted files and any rows that had "Undetermined" results for the Ct value will be removed. Empty cells will have "NA".
 }
 
 \seealso{
@@ -44,7 +44,7 @@ outfile2 <- tempfile(fileext = "NewFile2.csv")
 outfile3 <- tempfile(fileext = "NewFile3.csv")
 
 
-#Run this code to put "NewFile.csv", "NewFile2.csv", or "NewFile3.csv" in the file in the Temp Directory
+#Run the following code to put "NewFile.csv", "NewFile2.csv", or "NewFile3.csv" in the Temp Directory.
 
 ##combining three files
 Read_Combine_Quality(File1 = data, File2 = data2, File3 = data3, outfile1)
@@ -54,7 +54,7 @@ Read_Combine_Quality(File1 = data, File2 = data2, New_name.csv = outfile2)
 Read_Combine_Quality(File1 = data, New_name.csv = outfile3)
 
 \dontrun{
-#Run this code to view "NewFile.csv", "NewFile2.csv", or "NewFile3.csv" in your directory
+#Run the following code to view "NewFile.csv", "NewFile2.csv", or "NewFile3.csv" in your designated directory.
 
 ##combining three files
 Read_Combine_Quality(File1 = data, File2 = data2, File3 = data3, "NewFile.csv")
